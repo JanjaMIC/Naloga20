@@ -4,7 +4,8 @@ import jinja2
 import webapp2
 import cgi
 from models import Vseofilmu
-
+from models import Uporabnik
+from google.appengine.api import users
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -29,9 +30,27 @@ class BaseHandler(webapp2.RequestHandler):
         return self.response.out.write(template.render(params))
 
 
+
+class RegistracijaHandler(BaseHandler):
+    def get(self):
+        return self.render_template("registracija.html")
+
+def post(self):
+        ime = self.request.get("ime")
+        priimek = self.request.get("priimek")
+        email = self.request.get("email")
+        geslo = self.request.get("geslo")
+        ponovno_geslo = self.request.get("ponovno_geslo")
+
+        if geslo == ponovno_geslo:
+            Uporabnik.ustvari(ime=ime, priimek=priimek, email=email, original_geslo=geslo)
+            return self.redirect_to("main")
+
+
 class MainHandler(BaseHandler):
     def get(self):
         return self.render_template("index.html")
+
 
 
 class PosljiSporociloHandler(BaseHandler):
@@ -46,11 +65,11 @@ class PosljiSporociloHandler(BaseHandler):
         mnenje = self.request.get("mnenje")
         slika = self.request.get("slika")
 
-        naslov = self.popravi_input(naslov)
-        ocena = self.popravi_input(ocena)
-        ocenjevalec = self.popravi_input(ocenjevalec)
-        mnenje = self.popravi_input(mnenje)
-        slika = self.popravi(slika)
+        # naslov = self.popravi_input(naslov)
+        # ocena = self.popravi_input(ocena)
+        # ocenjevalec = self.popravi_input(ocenjevalec)
+        # mnenje = self.popravi_input(mnenje)
+        # slika = self.popravi(slika)
 
 
         sporocilo = Vseofilmu(naslov=naslov, ocena=ocena, slika=slika, ocenjevalec=ocenjevalec, mnenje=mnenje)
@@ -135,6 +154,7 @@ class IzbrisiSporociloHandler(BaseHandler):
 
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/registracija', RegistracijaHandler),
     webapp2.Route('/poslano', PosljiSporociloHandler),
     webapp2.Route('/prikazi_vnose', PrikaziSporocilaHandler),
     webapp2.Route('/sporocilo/<sporocilo_id:\d+>', PosameznoSporociloHandler),

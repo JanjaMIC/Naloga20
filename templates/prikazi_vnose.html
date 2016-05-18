@@ -20,17 +20,33 @@
     <h1>Pregled vseh ocenjenih filmov</h1>
         <div class="prikaz">
     {% for sporocilo in vsi_vnosi %}
-        <p>
-            <b> Naslov: {{ sporocilo.naslov }}</b> 
-            <br>    
-            <b> Ocena:  {{ sporocilo.ocena}}</b>
+            <p>
+            <div class="naslov">
+                <span class="input-group-addon" id="basic-addon1">Naslov:  </span>
+                <input type="text" name="naslov" class="form-control" placeholder="({{ sporocilo.naslov }})" aria-describedby="basic-addon1">
+
+            </div>
+
             <br>
-            <p> img src="{{ sporocilo.slika }}</p>
+              <div class="ocena">
+                <span class="input-group-addon" id="basic-addon1">Ocena:  </span>
+                <input type="integer" name="ocena" class="form-control" placeholder="({{ sporocilo.ocena }})" aria-describedby="basic-addon1">
+            </div>
+
             <br>
             <p>
-            <a href="/sporocilo/{{ sporocilo.key.id() }}">Podrobnosti</a> </p>
+                 <div class="slika">
+                <span class="input-group-addon" id="basic-addon1">Slika:  </span>
+                 <p> img src="{{ sporocilo.slika }} </p>
+            </div>
+
             <br>
-        
+            <p>
+            <a href="/sporocilo/{{ sporocilo.key.id() }}">Podrobnosti</a>
+
+            </p>
+            <br>
+
 
     {% endfor %}
     

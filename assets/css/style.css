@@ -1,4 +1,74 @@
-body {
-    background-color: pink;
-    color: grey;
-}
+<style>
+    .body {padding: 30 px;
+    }
+
+    .jumbotron {
+        background-color: azure;
+        color: cornflowerblue;
+        text-align: center;
+        padding: 20px;
+    }
+
+
+    .naslov {
+        background-color: azure;
+        color: lightgoldenrodyellow;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .ocena_filma {
+        background-color: azure;
+        color: lightcyan;
+        text-align: center;
+        padding: 20px;
+    }
+
+
+    .ocenjevalec_filma {
+        background-color: azure;
+        color: lightpink;
+        text-align: center;
+        padding: 20px;}
+
+
+    .mnenje_film {
+        background-color: azure;
+        color: cornflowerblue;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .slika_film {
+        background-color: azure;
+        color: cornflowerblue;
+        text-align: center;
+        padding: 20px;}
+
+    .gumb1 {
+        background-color: azure;
+        color: cornflowerblue;
+        text-align: center;
+        padding: 20px;
+        position: center;
+    }
+
+
+    .gumb2 {
+        background-color: azure;
+        color: cornflowerblue;
+        text-align: center;
+        padding: 20px;
+        position: center;
+    }
+
+
+    .na_seznam{
+        background-color: azure;
+        color: cornflowerblue;
+        text-align: center;
+        align-items: center;
+        padding: 20px;}0
+    }
+
+</style>
