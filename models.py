@@ -2,7 +2,7 @@ from google.appengine.ext import ndb
 
 
 class Vseofilmu(ndb.Model):
-    naslov = (ndb.StringProperty()
+    naslov = ndb.StringProperty()
     ocena = ndb.IntegerProperty()
     ocenjevalec = ndb.StringProperty()
     mnenje = ndb.StringProperty()

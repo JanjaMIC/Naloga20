@@ -19,7 +19,7 @@
    
     <h1>Pregled vseh ocenjenih filmov</h1>
         <div class="prikaz">
-    {% for sporocilo in vsi_vnosi %}
+    {% for sporocilo in vsa_sporocila %}
             <p>
             <div class="naslov">
                 <span class="input-group-addon" id="basic-addon1">Naslov:  </span>
@@ -37,7 +37,7 @@
             <p>
                  <div class="slika">
                 <span class="input-group-addon" id="basic-addon1">Slika:  </span>
-                 <p> img src="{{ sporocilo.slika }} </p>
+                 <p> <img src="{{ sporocilo.slika }}"> </p>
             </div>
 
             <br>

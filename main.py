@@ -35,7 +35,7 @@ class RegistracijaHandler(BaseHandler):
     def get(self):
         return self.render_template("registracija.html")
 
-def post(self):
+    def post(self):
         ime = self.request.get("ime")
         priimek = self.request.get("priimek")
         email = self.request.get("email")
